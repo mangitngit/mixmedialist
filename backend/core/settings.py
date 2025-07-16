@@ -5,6 +5,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "changeme")
+DEBUG = True
+ALLOWED_HOSTS = ["*"]
+
+ROOT_URLCONF = "core.urls"
+WSGI_APPLICATION = "core.wsgi.application"
+STATIC_URL = "/static/"
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
