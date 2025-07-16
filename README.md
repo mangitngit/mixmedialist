@@ -1,2 +1,2 @@
 # mixmedialist
-Merge list to watch from various providers
+Merge lists to watch from various providers
