@@ -1,5 +1,15 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+
+import { ref, onMounted } from 'vue'
+
+const message = ref('')
+onMounted(async () => {
+  const res = await fetch(import.meta.env.VITE_API_URL + '/hello/')
+  const data = await res.json()
+  message.value = data.message
+})
+
 </script>
 
 <template>
@@ -11,7 +21,10 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <HelloWorld msg="Vite + Vuf" />
+
+  <h1>{{ message }}</h1>
+
 </template>
 
 <style scoped>
@@ -28,18 +41,3 @@ import HelloWorld from './components/HelloWorld.vue'
   filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
-
-<script setup>
-import { ref, onMounted } from 'vue'
-
-const message = ref('')
-onMounted(async () => {
-  const res = await fetch(import.meta.env.VITE_API_URL + '/hello/')
-  const data = await res.json()
-  message.value = data.message
-})
-</script>
-
-<template>
-  <h1>{{ message }}</h1>
-</template>
